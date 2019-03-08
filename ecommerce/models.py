@@ -1,26 +1,40 @@
 from django.db import models
+from django.db.models.signals import pre_save
+from django.utils.text import slugify
+from transliterate import translit
 
 
+# Category model
 class Category(models.Model):
-
     name = models.CharField(max_length=100)
-    slug = models.SlugField()
+    slug = models.SlugField(blank=True)
 
     def __str__(self):
         return self.name
 
 
+def pre_save_category_slug(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        slug = slugify(translit(str(instance.name), reversed=True))
+        instance.slug = slug
+
+
+pre_save.connect(pre_save_category_slug, sender=Category)
+
+
+# Brand model
 class Brand(models.Model):
-
     name = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
 
 
+# Product model
 def image_folder(instance, filename):
     filename = instance.slug + '.' + filename.split('.')[1]
     return "{0}/{1}".format(instance.slug, filename)
+
 
 class Product(models.Model):
     category = models.ForeignKey(
