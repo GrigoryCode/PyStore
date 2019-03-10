@@ -59,7 +59,7 @@
         <h5 class="my-4">Категории</h5>
         <div class="list-group">
             {% for category in categories %}
-            <a href="{{ category.get_absolute_url }}"" class="list-group-item">{{ category.name }}</a>
+            <a href="{{ category.get_absolute_url }}" class="list-group-item">{{ category.name }}</a>
             {% endfor %}
           <!--<a href="#" class="list-group-item">Category 2</a>-->
           <!--<a href="#" class="list-group-item">Category 3</a>-->
@@ -102,7 +102,7 @@
           {% for product in products %}
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <a href="{{ product.get_absolute_url }}""><img class="card-img-top" src="{{ product.image.url }}" alt="" style="width: 100%;"></a>
+              <a href="{{ product.get_absolute_url }}"><img class="card-img-top" src="{{ product.image.url }}" alt="" style="width: 100%;"></a>
               <div class="card-body">
                 <br>
                 <h5 class="card-title">

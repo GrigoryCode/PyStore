@@ -1,5 +1,24 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+  <h5 class="my-4">{{ product.title }}</h5>
+  <div class="row">
+      <div>
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col-auto d-none d-lg-block">
+        <img src="{{ product.image.url }}" style="width: 100%" alt="">
+        </div>
+        <div class="col p-4 d-flex flex-column position-static">
+        <p>
+            {{ product.description }} <br>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae natus nemo officiis, quia rerum
+            voluptatum. A aliquam asperiores, doloremque dolores enim ex in inventore laudantium quibusdam sed similique
+            vitae voluptate.
+        </p>
+        <h5>{{ product.price }} руб.</h5>
+      <a href=""><button class="btn btn-primary">В корзину</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock content %}
